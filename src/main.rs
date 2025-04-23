@@ -1,10 +1,7 @@
 use std::env;
 
 use actix_web::{App, HttpServer, middleware, web};
-use mall::{
-    application::item_service::ItemService, config::di::AppContainer,
-    driven::item_repository_impl::ItemRepositoryImpl, routes,
-};
+use mall::{config::di::AppContainer, routes};
 use sqlx::postgres::PgPoolOptions;
 
 #[actix_web::main]

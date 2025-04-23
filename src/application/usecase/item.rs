@@ -5,7 +5,7 @@ use crate::domain::{
         secondary::item_repository_port::ItemRepository,
     },
 };
-
+#[derive(Debug, Clone)]
 pub struct ItemService<R: ItemRepository> {
     repo: R,
 }

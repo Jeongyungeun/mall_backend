@@ -4,6 +4,7 @@ use crate::{
     application::usecase::item::ItemService, driven::item_repository_impl::ItemRepositoryImpl,
 };
 
+#[derive(Debug, Clone)]
 pub struct AppContainer {
     pub item_service: ItemService<ItemRepositoryImpl>,
 }

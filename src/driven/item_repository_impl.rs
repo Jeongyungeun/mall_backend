@@ -2,6 +2,7 @@ use sqlx::PgPool;
 
 use crate::domain::{model::item::Item, port::secondary::item_repository_port::ItemRepository};
 
+#[derive(Debug, Clone)]
 pub struct ItemRepositoryImpl {
     pool: PgPool,
 }

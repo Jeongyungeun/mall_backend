@@ -1,19 +1,19 @@
 use std::env;
 
 use actix_web::{App, HttpServer, middleware, web};
-use mall::{config::di::AppContainer, routes};
-use sqlx::postgres::PgPoolOptions;
+use mall::{
+    config::{database, di::AppContainer},
+    routes,
+};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     dotenv::from_filename(".env.dev").ok();
     env_logger::init();
-    let database_url = env::var("DATABASE_URL").expect("DATABASE CONNECTION ERROR");
-    let pool = PgPoolOptions::new()
-        .max_connections(5)
-        .connect(&database_url)
+
+    let pool = database::create_db_pool()
         .await
-        .expect("Failed To connect to Postgres");
+        .expect("Failed to connect to Postgres");
 
     let container = AppContainer::new(pool.clone());
 

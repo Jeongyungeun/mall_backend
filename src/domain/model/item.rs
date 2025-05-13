@@ -8,7 +8,7 @@ use serde::Serialize;
 
 use super::error::CreateError;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct ItemId(Option<String>);
 
 impl ItemId {
